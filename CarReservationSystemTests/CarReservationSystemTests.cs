@@ -118,14 +118,18 @@ namespace CarReservationSystemTests
             DeleteReservation.DeleteExistingID().GetAwaiter().GetResult();
             DeleteReservation.DeleteNonExistingID().GetAwaiter().GetResult();
 
+            
+            // run in a loop for schedular
 
-            /*  Scheduler
-            var tasks = new List<Task>();
-            DateTime quitTime = DateTime.Now.AddMinutes(0.1);
-            tasks.Add(Task.Factory.StartNew(() => TimeToQuitAsync(quitTime)));
-
-            Task.WaitAll(tasks.ToArray());
+            /* 
+            Random random = new Random();
+            var waitTime = random.Next(1,5);
+            DateTime quitTime = DateTime.Now.AddMinutes(waitTime);
+            TimeToQuitAsync(quitTime).GetAwaiter().GetResult();
+            var task = Task.Factory.StartNew(() => TimeToQuitAsync(quitTime));
+            var temp = task.GetAwaiter().GetResult();
             */
+
         }
 
         public static async Task TimeToQuitAsync(DateTime timeToAct)
@@ -133,7 +137,7 @@ namespace CarReservationSystemTests
             Boolean timeHasCome = false;
             while (!timeHasCome)
             {
-                System.Threading.Thread.Sleep(600);
+                System.Threading.Thread.Sleep(60000);
 
                 timeHasCome |= DateTime.Now >= timeToAct;
             }
