@@ -22,7 +22,7 @@ namespace CarReservationSystemTests
                 {
                     make = "RandomMake",
                     license = "RandomLicense",
-                    rentalPricePerDay = 0
+                    rentalPricePerDay = 10.0
                 };
 
                 Car newCar = new Car();
